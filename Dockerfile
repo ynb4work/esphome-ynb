@@ -1,7 +1,18 @@
-FROM esphome/esphome:latest
+# Используем официальное Python окружение в качестве базового образа
+FROM python:3.8-slim
 
-# Копируем конфигурационный файл в рабочую директорию
-COPY config.yaml /config.yaml
+# Устанавливаем рабочую директорию в контейнере
+WORKDIR /app
 
-# Запускаем ESPHome
-CMD ["esphome", "dashboard", "/config.yaml"]
+# Устанавливаем необходимые пакеты из requirements.txt
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Устанавливаем ESPHome
+RUN pip install esphome
+
+# Копируем остальные файлы вашего приложения
+COPY . .
+
+# Запускаем ваше приложение
+CMD ["python", "./your_script.py"]
