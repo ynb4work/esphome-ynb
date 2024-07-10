@@ -23,8 +23,7 @@ external_components:
     refresh: 0s
 
 api:
-  encryption:
-    key: "BfCovJD8emPiD6KDt/ou90jGxsRyxNINLlZ6qhxlZCA="
+  port: 6053  # Пример номера порта 
 
 ota:
   - platform: esphome
