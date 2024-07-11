@@ -13,21 +13,22 @@ esphome:
     name: "syssi.esphome-jk-bms"
     version: 2.0.0
 
-esp32:
+esphome:
+  name: example_project
+  platform: ESP32
   board: esp32dev
-  framework:
-    type: arduino
 
-external_components:
-  - source: ${external_components_source}
-    refresh: 0s
+wifi:
+  ssid: "Your WiFi SSID"
+  password: "Your WiFi Password"
 
 api:
-  port: 6053  # Пример номера порта 
+  password: "admin5555"
+  port: 6053  # Порт, который нужно экспонировать
 
 ota:
-  - platform: esphome
-    password: "5062e25aa4f7ab675ebe263186f1aab9"
+  password: "admin5555"
+
 
 wifi:
   ssid: !secret wifi_ssid
