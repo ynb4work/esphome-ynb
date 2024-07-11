@@ -1,23 +1,22 @@
-# Dockerfile for ESPHome project based on Python Slim
+# Dockerfile для проекта ESPHome на базе Python Slim
 
-# Use the Python 3.8 Slim base image
+# Используем базовый образ Python 3.8 Slim
 FROM python:3.8-slim
 
-# Set the working directory inside the container
+# Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
 
-# Copy the requirements.txt file from the current directory into the container
+# Копируем файл requirements.txt из текущего каталога внутрь контейнера
 COPY requirements.txt ./
 
-# Install required Python packages
+# Устанавливаем необходимые пакеты Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the port specified in your config.yaml
+# Копируем config.yaml из текущего каталога внутрь контейнера
+COPY config.yaml ./
+
+# Экспонируем порт 6053, указанный в config.yaml
 EXPOSE 6053
 
-# Additional instructions to build your ESPHome project
-# COPY config.yaml ./  # Example of how to copy a configuration file
-# ...
-
-# Command to run your project, if needed
+# Команда для запуска вашего проекта, если нужно
 # CMD ["python", "app.py"]
